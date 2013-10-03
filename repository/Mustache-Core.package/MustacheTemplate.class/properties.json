@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "MustacheCompositePart",
+	"category" : "Mustache-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"stream",
+		"parser"
+	],
+	"name" : "MustacheTemplate",
+	"type" : "normal"
+}

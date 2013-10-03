@@ -1,0 +1,3 @@
+reading
+readDefaultTag
+	self readHtmlEscapedToken

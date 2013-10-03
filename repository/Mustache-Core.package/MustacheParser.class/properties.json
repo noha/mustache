@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Mustache-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"stream",
+		"startDelimiter",
+		"endDelimiter",
+		"stack"
+	],
+	"name" : "MustacheParser",
+	"type" : "normal"
+}

@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "MustacheCompositePart",
+	"category" : "Mustache-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"selector"
+	],
+	"name" : "MustacheSection",
+	"type" : "normal"
+}

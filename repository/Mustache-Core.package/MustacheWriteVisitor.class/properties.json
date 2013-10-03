@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "MustacheVisitor",
+	"category" : "Mustache-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"strings",
+		"context"
+	],
+	"name" : "MustacheWriteVisitor",
+	"type" : "normal"
+}
