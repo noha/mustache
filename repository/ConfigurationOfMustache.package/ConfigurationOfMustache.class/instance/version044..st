@@ -4,9 +4,10 @@ version044: spec
 
 	spec for: #'common' do: [
 		spec blessing: #'development'.
-		spec description: '0.43 : release on smalltalkhub'.
+		spec description: '0.43 : release on smalltalkhub
+0.44 : comments added and code critics'.
 		spec author: 'NorbertHartl'.
-		spec timestamp: '10/3/2013 21:38'.
+		spec timestamp: '10/3/2013 21:50'.
 		spec 
-			package: 'Mustache-Core' with: 'Mustache-Core-NorbertHartl.15';
+			package: 'Mustache-Core' with: 'Mustache-Core-NorbertHartl.16';
 			package: 'Mustache-Tests' with: 'Mustache-Tests-NorbertHartl.6'. ].
