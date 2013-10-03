@@ -1,0 +1,1 @@
+A MustacheParser is the internally used parser that is used my MustacheTemplate to compile a template string into a template structure

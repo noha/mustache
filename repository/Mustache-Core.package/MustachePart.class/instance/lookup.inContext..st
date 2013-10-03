@@ -1,3 +1,3 @@
-as yet unclassified
+resolving
 lookup: aToken inContext: anObject
 	^ anObject mustacheLookup: aToken
