@@ -4,7 +4,7 @@ version045: spec
 
 	spec for: #'common' do: [
 		spec blessing: #'release'.
-		spec description: '0.44 : comments added and code critics'.
+		spec description: '0.45 : comments added and code critics'.
 		spec author: 'NorbertHartl'.
 		spec timestamp: '10/3/2013 21:50'.
 		spec 
