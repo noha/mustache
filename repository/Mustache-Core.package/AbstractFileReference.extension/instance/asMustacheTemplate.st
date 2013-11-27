@@ -1,3 +1,3 @@
 *mustache-core
 asMustacheTemplate
-	^ MustacheTemplate on: self contents asString
+	^ MustacheTemplate on: self readStream contents asString
