@@ -1,5 +1,5 @@
 tests
-testBlock
+testBlockValue
 	| template result |
 	template := MustacheTemplate on: 'This is a test for {{ name }}.'.
 	result := template value: { 'name' -> [ 'blockcontent' ] } asDictionary .
