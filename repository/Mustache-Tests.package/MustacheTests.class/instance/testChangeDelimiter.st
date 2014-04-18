@@ -1,7 +1,7 @@
 tests
 testChangeDelimiter
 	| template result |
-	template := MustacheTemplate on: 'This is a test for {{ name }} {{=<% %>=}} and something that uses <% delimiter %> delimiter. And change it back to <%={{ }}=%>{{back}}.'.
+	template := MustacheTemplate on: 'This is a test for {{ name }} {{=<% %>}} and something that uses <% delimiter %> delimiter. And change it back to <%={{ }}%>{{back}}.'.
 	result := template value: { 
 		'name' -> 'simpletoken' . 
 		'delimiter' -> 'another' . 
