@@ -4,4 +4,4 @@ readChangeDelimiter
 		[ stream peek isSeparator ] whileFalse: [ 
 			s nextPut: stream next ]]).
 	self consumeWhiteSpace.
-	self endDelimiter: (stream upToAll: self endDelimiter) allButLast
+	self endDelimiter: (stream upToAll: self endDelimiter)
