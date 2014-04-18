@@ -1,3 +1,3 @@
 accessing
 valueInContext: anObject
-	^ (self lookupInContext: anObject) value
+	^ self lookupInContext: anObject
