@@ -1,0 +1,3 @@
+*mustache-core
+mustacheDefaultWhenLookupFails
+	^ nil
