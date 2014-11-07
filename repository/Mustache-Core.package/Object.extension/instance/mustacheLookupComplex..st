@@ -2,7 +2,7 @@
 mustacheLookupComplex: aString
 	| stream firstPart |
 	stream := aString readStream.
-	firstPart := stream upTo: Character space.
+	firstPart := stream upTo: $. .
 	^ stream atEnd
 		ifTrue: [ self mustacheDefaultWhenLookupFails ]
 		ifFalse: [ (self mustacheLookup: firstPart) mustacheLookup: stream upToEnd ]
