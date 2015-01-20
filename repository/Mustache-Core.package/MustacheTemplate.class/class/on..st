@@ -1,6 +1,5 @@
 instance creation
 on: aStringOrStream 
 	^ self new
-		stream: aStringOrStream readStream;
-		compile;
+		compile: aStringOrStream readStream;
 		yourself

@@ -5,10 +5,7 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"stream",
-		"parser"
-	],
+	"instvars" : [ ],
 	"name" : "MustacheTemplate",
 	"type" : "normal"
 }
