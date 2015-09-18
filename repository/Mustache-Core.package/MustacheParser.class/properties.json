@@ -9,8 +9,7 @@
 		"stream",
 		"startDelimiter",
 		"endDelimiter",
-		"stack",
-		"delimiterExtensions"
+		"stack"
 	],
 	"name" : "MustacheParser",
 	"type" : "normal"
