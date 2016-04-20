@@ -9,6 +9,7 @@ baseline02: spec
 				spec
 					className: #ConfigurationOfJSON;
 					versionString: #'stable';
+					loads: #('default' );
 					repository: 'http://smalltalkhub.com/mc/PharoExtras/JSON/main/' ].
 		spec 
 			package: 'Mustache-Core';
@@ -17,6 +18,6 @@ baseline02: spec
 			package: #'Mustache-Cli' with: [
 				spec requires: #('JSON' ). ].
 		spec 
-			group: 'default' with: #('Core' 'Tests' #'Mustache-Cli' );
+			group: 'Core' with: #('Mustache-Core' );
 			group: 'Tests' with: #('Mustache-Tests' );
-			group: 'Core' with: #('Mustache-Core' ). ].
+			group: 'default' with: #('Core' 'Tests' #'Mustache-Cli' ). ].
