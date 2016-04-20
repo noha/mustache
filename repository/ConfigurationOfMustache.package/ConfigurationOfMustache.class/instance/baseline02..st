@@ -14,7 +14,8 @@ baseline02: spec
 			package: 'Mustache-Core';
 			package: 'Mustache-Tests' with: [
 				spec requires: #('Mustache-Core' ). ];
-			package: #'Mustache-Cli'.
+			package: #'Mustache-Cli' with: [
+				spec requires: #('JSON' ). ].
 		spec 
 			group: 'default' with: #('Core' 'Tests' #'Mustache-Cli' );
 			group: 'Tests' with: #('Mustache-Tests' );
