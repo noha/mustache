@@ -1,12 +1,17 @@
 activation
 activate
-	| result template json |
+	| result template json partials |
 	self activateHelp
 		ifTrue: [ ^ self ].
-	self optionAt: 'baseDirectory' ifPresent: [ :dir | baseDirectory := dir asFileReference ].
-	template := (self baseDirectory resolve: self templateOption) contents.
+	self
+		optionAt: 'baseDirectory'
+		ifPresent: [ :dir | baseDirectory := dir asFileReference ].
 	json := (self baseDirectory resolve: self jsonDataOption) contents.
-	result := (MustacheTemplate on: template) value: (Json readFrom: json readStream).
+	template := (self baseDirectory resolve: self templateOption) contents.
+	partials := self partialsToDictionary: self partialsOption.
+	result := (MustacheTemplate on: template)
+		value: (Json readFrom: json readStream)
+		partials: partials.
 	self stdout nextPutAll: result.
 	self stdout flush.
 	self exitSuccess

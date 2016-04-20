@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "ThibaultArloing 4/19/2016 11:14",
+	"commentStamp" : "YannDubois 4/20/2016 12:29",
 	"super" : "CommandLineHandler",
 	"category" : "Mustache-Cli",
 	"classinstvars" : [ ],
