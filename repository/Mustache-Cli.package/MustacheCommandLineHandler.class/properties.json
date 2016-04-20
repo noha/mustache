@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "ThibaultArloing 4/19/2016 11:14",
+	"super" : "CommandLineHandler",
+	"category" : "Mustache-Cli",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"baseDirectory"
+	],
+	"name" : "MustacheCommandLineHandler",
+	"type" : "normal"
+}
