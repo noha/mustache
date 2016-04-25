@@ -1,3 +1,3 @@
 as yet unclassified
 commandName
-	^'mustache-pharo'
+	^'mustache'
