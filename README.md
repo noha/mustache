@@ -51,7 +51,7 @@ We can use collections to make loop constructs in templates
 A context object with content
 
     {
-        'label' -> 'fine.
+        'label' -> 'fine'.
         'list' -> {
             { 'number' -> 1 } asDictionary.
             { 'number' -> 2 } asDictionary.
