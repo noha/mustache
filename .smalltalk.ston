@@ -1,0 +1,9 @@
+SmalltalkCISpec {
+  #loading : [
+    SCIMetacelloLoadSpec {
+      #baseline : 'Mustache',
+      #directory : 'repository',
+      #platforms : [ #pharo ]
+    }
+  ]
+}
