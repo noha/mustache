@@ -1,0 +1,3 @@
+resolving
+defaultVisitorClass
+	^ MustacheWriteVisitor
