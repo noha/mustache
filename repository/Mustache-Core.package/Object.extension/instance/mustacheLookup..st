@@ -1,6 +1,6 @@
 *mustache-core
 mustacheLookup: aString
 	(aString = '.') ifTrue: [ ^ self ].
-	^ (self respondsTo: aString asSymbol) 
-		ifTrue: [ self perform: aString asSymbol ]
-		ifFalse: [  self mustacheLookupComplex: aString ]
+	^ [ self perform: aString asSymbol ]
+		on: MessageNotUnderstood 
+		do: [ :err | self mustacheLookupComplex: aString  ]
