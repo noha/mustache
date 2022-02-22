@@ -1,3 +1,0 @@
-reading
-readDefaultTag
-	self readHtmlEscapedToken
