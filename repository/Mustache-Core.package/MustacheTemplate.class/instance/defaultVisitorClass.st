@@ -1,3 +1,0 @@
-resolving
-defaultVisitorClass
-	^ MustacheWriteVisitor
