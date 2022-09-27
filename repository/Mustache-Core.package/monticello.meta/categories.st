@@ -1,1 +1,1 @@
-SystemOrganization addCategory: #'Mustache-Core'!
+SystemOrganization addCategory: 'Mustache-Core'!

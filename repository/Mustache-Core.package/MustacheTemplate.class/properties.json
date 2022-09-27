@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "<historical>",
+	"commentStamp" : "",
 	"super" : "MustacheCompositePart",
 	"category" : "Mustache-Core",
 	"classinstvars" : [ ],

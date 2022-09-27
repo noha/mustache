@@ -1,1 +1,1 @@
-SystemOrganization addCategory: #'Mustache-Tests'!
+SystemOrganization addCategory: 'Mustache-Tests'!

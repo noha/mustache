@@ -1,0 +1,4 @@
+accessing
+delegate
+
+	^ delegate
