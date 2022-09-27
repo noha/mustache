@@ -1,3 +1,3 @@
 visiting
 visitHtmlEscapedToken: aToken
-	self addString: '{{' , aToken token , '}}'
+	self addString: '{{' ; addString: aToken token ; addString: '}}'
