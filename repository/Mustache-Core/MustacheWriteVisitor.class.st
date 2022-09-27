@@ -10,7 +10,7 @@ Class {
 		'strings',
 		'context'
 	],
-	#category : 'Mustache-Core'
+	#category : #'Mustache-Core'
 }
 
 { #category : #accessing }
@@ -19,7 +19,7 @@ MustacheWriteVisitor >> addString: aString [
 		strings add: aString ]
 ]
 
-{ #category : #accessing }
+{ #category : #'initialize-release' }
 MustacheWriteVisitor >> context: anObject [
 	context := anObject
 ]

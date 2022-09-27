@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'token'
 	],
-	#category : 'Mustache-Core'
+	#category : #'Mustache-Core'
 }
 
 { #category : #'instance creation' }
@@ -21,6 +21,11 @@ MustacheToken >> accept: aVisitor [
 { #category : #resolving }
 MustacheToken >> lookupInContext: anObject [
 	^ self lookup: token inContext: anObject
+]
+
+{ #category : #accessing }
+MustacheToken >> token [
+	^ token 
 ]
 
 { #category : #accessing }

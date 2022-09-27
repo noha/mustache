@@ -1,7 +1,7 @@
 Class {
 	#name : #MustacheTests,
 	#superclass : #TestCase,
-	#category : 'Mustache-Tests'
+	#category : #'Mustache-Tests'
 }
 
 { #category : #tests }
@@ -153,6 +153,23 @@ MustacheTests >> testDotTokenWithDictionary [
 	result := template value: {
 		'foo' -> 'bar' } asDictionary.
 	self assert: result = 'a Dictionary(''foo''-&gt;''bar'' )' 
+]
+
+{ #category : #tests }
+MustacheTests >> testExportBlockSection [
+	| template |
+	template := MustacheTemplate on: '{{#wrapped}} {{name}} is awesome {{/wrapped}}'.
+	
+	self assert: template export equals: '{{#wrapped}} {{name}} is awesome {{/wrapped}}'.
+	
+
+]
+
+{ #category : #tests }
+MustacheTests >> testExportMultipleTokens [
+	| template |
+	template := MustacheTemplate on: '1 = {{ one }}, 2 = {{ two }}, and so on'.
+self assert: template export equals: '1 = {{one}}, 2 = {{two}}, and so on'
 ]
 
 { #category : #tests }

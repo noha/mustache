@@ -18,7 +18,7 @@ Nested templates can be used be providing a dictionary with keys as the names us
 Class {
 	#name : #MustacheTemplate,
 	#superclass : #MustacheCompositePart,
-	#category : 'Mustache-Core'
+	#category : #'Mustache-Core'
 }
 
 { #category : #'instance creation' }
@@ -43,6 +43,14 @@ MustacheTemplate >> compile: aStream [
 { #category : #resolving }
 MustacheTemplate >> defaultVisitorClass [
 	^ MustacheWriteVisitor
+]
+
+{ #category : #resolving }
+MustacheTemplate >> export [
+	| visitor |
+	visitor := MustacheExportVisitor new.
+	self accept: visitor.
+	^ visitor string
 ]
 
 { #category : #accessing }
