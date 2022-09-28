@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'parts'
 	],
-	#category : 'Mustache-Core'
+	#category : #'Mustache-Core'
 }
 
 { #category : #adding }
@@ -21,4 +21,15 @@ MustacheCompositePart >> initialize [
 { #category : #accessing }
 MustacheCompositePart >> parts [
 	^ parts
+]
+
+{ #category : #writing }
+MustacheCompositePart >> storeOn: aWriteStream [ 
+	parts do: [ :part |
+		part storeOn: aWriteStream  ]
+]
+
+{ #category : #accessing }
+MustacheCompositePart >> storeSize [
+	^ parts sum: #storeSize
 ]

@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'selector'
 	],
-	#category : 'Mustache-Core'
+	#category : #'Mustache-Core'
 }
 
 { #category : #'instance creation' }
@@ -41,6 +41,20 @@ MustacheSection >> selector [
 { #category : #accessing }
 MustacheSection >> selector: aString [ 
 	selector := aString
+]
+
+{ #category : #writing }
+MustacheSection >> storeOn: aWriteStream [ 
+	aWriteStream << '{{#' << selector << '}}'.
+	super storeOn: aWriteStream.
+	aWriteStream << '{{/' << selector << '}}'
+]
+
+{ #category : #accessing }
+MustacheSection >> storeSize [ 
+	"the size of a section is the size of its content plus two times 
+	the selector size plus 5 extra markup characters {{#}} and {{/}}"
+	^ super storeSize + (2 * (selector size + 5))
 ]
 
 { #category : #accessing }
