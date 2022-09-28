@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'string'
 	],
-	#category : 'Mustache-Core'
+	#category : #'Mustache-Core'
 }
 
 { #category : #'instance creation' }
@@ -16,6 +16,16 @@ MustacheStringChunk class >> string: aString [
 { #category : #visiting }
 MustacheStringChunk >> accept: aVisitor [ 
 	aVisitor visitStringChunk: self
+]
+
+{ #category : #writing }
+MustacheStringChunk >> storeOn: aWriteStream [ 
+	aWriteStream nextPutAll: string
+]
+
+{ #category : #accessing }
+MustacheStringChunk >> storeSize [
+	^ string size
 ]
 
 { #category : #accessing }

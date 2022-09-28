@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'token'
 	],
-	#category : 'Mustache-Core'
+	#category : #'Mustache-Core'
 }
 
 { #category : #'instance creation' }
@@ -21,6 +21,23 @@ MustacheToken >> accept: aVisitor [
 { #category : #resolving }
 MustacheToken >> lookupInContext: anObject [
 	^ self lookup: token inContext: anObject
+]
+
+{ #category : #writing }
+MustacheToken >> storeOn: aWriteStream [ 
+	aWriteStream << '{{{' << token << '}}}'
+]
+
+{ #category : #accessing }
+MustacheToken >> storeSize [ 
+	"size of the token plus 4 markup characters {{}}"
+	^ token size + 4
+]
+
+{ #category : #accessing }
+MustacheToken >> token [
+
+	^ token
 ]
 
 { #category : #accessing }

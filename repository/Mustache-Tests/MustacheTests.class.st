@@ -1,7 +1,7 @@
 Class {
 	#name : #MustacheTests,
 	#superclass : #TestCase,
-	#category : 'Mustache-Tests'
+	#category : #'Mustache-Tests'
 }
 
 { #category : #tests }
@@ -447,4 +447,64 @@ MustacheTests >> testUnescapedToken [
 	result := template value: { 'name' -> '&' } asDictionary .
 	self assert: result = 'This is a test for &.'.
 	
+]
+
+{ #category : #tests }
+MustacheTests >> testWriteComment [
+	| template |
+	"right now we just ignore comments and therefor they do not appear when 
+	the template is serialized"
+	template := MustacheTemplate on: 'before {{!name}} after'.
+
+	self assert: template storeString equals: 'before  after'.
+]
+
+{ #category : #tests }
+MustacheTests >> testWriteInvertedSection [ 
+	| template |
+	template := MustacheTemplate on: '{{^wrapped}} {{name}} is awesome {{/wrapped}}'.
+
+	self assert: template storeString equals: '{{^wrapped}} {{name}} is awesome {{/wrapped}}'.
+]
+
+{ #category : #tests }
+MustacheTests >> testWriteMultipleTokens [ 
+	| template |
+	template := MustacheTemplate on: '1 = {{ one }}, 2 = {{ two }}, and so on'.
+	self assert: template storeString equals: '1 = {{one}}, 2 = {{two}}, and so on' 
+]
+
+{ #category : #tests }
+MustacheTests >> testWritePartial [
+	| template |
+	"right now we just ignore comments and therefor they do not appear when 
+	the template is serialized"
+	template := MustacheTemplate on: 'before {{>name}} after'.
+
+	self assert: template storeString equals: 'before {{>name}} after'.
+]
+
+{ #category : #tests }
+MustacheTests >> testWriteSection [ 
+	| template |
+	template := MustacheTemplate on: '{{#wrapped}} {{name}} is awesome {{/wrapped}}'.
+
+	self assert: template storeString equals: '{{#wrapped}} {{name}} is awesome {{/wrapped}}'.
+]
+
+{ #category : #tests }
+MustacheTests >> testWriteUnescapedToken [
+	| template |
+	template := MustacheTemplate on: 'before {{{name}}} after'.
+
+	self assert: template storeString equals: 'before {{{name}}} after'.
+]
+
+{ #category : #tests }
+MustacheTests >> testWriteUnescapedTokenAmpersand [
+	| template |
+	template := MustacheTemplate on: 'before {{&name}} after'.
+	"at the moment there is no special handling to remember which unescape
+	option it was. So the result will be the canonical one"
+	self assert: template storeString equals: 'before {{{name}}} after'.
 ]

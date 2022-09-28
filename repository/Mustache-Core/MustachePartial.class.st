@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'name'
 	],
-	#category : 'Mustache-Core'
+	#category : #'Mustache-Core'
 }
 
 { #category : #'instance creation' }
@@ -26,4 +26,15 @@ MustachePartial >> name [
 { #category : #accessing }
 MustachePartial >> name: aString [ 
 	name := aString
+]
+
+{ #category : #writing }
+MustachePartial >> storeOn: aStream [ 
+	aStream << '{{>' << name << '}}'
+]
+
+{ #category : #accessing }
+MustachePartial >> storeSize [ 
+	"the size is the name of the partial plus 5 markup chararcters {{>}}"
+	^ name size + 5
 ]

@@ -6,10 +6,28 @@ For public access have a look at MustacheTemplate
 Class {
 	#name : #MustachePart,
 	#superclass : #Object,
-	#category : 'Mustache-Core'
+	#category : #'Mustache-Core'
 }
 
 { #category : #resolving }
 MustachePart >> lookup: aToken inContext: anObject [
 	^ anObject mustacheLookup: aToken
+]
+
+{ #category : #writing }
+MustachePart >> printString [
+	^ self storeString
+]
+
+{ #category : #writing }
+MustachePart >> storeSize [
+	self shouldBeImplemented 
+]
+
+{ #category : #writing }
+MustachePart >> storeString [
+	^ String 
+		new: self storeSize
+		streamContents: [ :stream | 
+			self storeOn: stream ]
 ]
