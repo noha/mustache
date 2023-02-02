@@ -1,3 +1,6 @@
+"
+I help loading Mustache
+"
 Class {
 	#name : #BaselineOfMustache,
 	#superclass : #BaselineOf,
@@ -11,7 +14,7 @@ BaselineOfMustache >> baseline: spec [
 	spec for: #common do: [ 
 		spec
 			baseline: 'JSON'
-			with: [ spec repository: 'github://sebastianconcept/JSON:v1.0.1' ].
+			with: [ spec repository: 'github://sebastianconcept/JSON:v1.0.2' ].
 		spec
 			package: 'Mustache-Core';
 			package: 'Mustache-Tests'
