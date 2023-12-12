@@ -10,20 +10,21 @@ Options:
 	[--baseDirectory] 		a directory where files can be found
 "
 Class {
-	#name : #MustacheCommandLineHandler,
-	#superclass : #CommandLineHandler,
+	#name : 'MustacheCommandLineHandler',
+	#superclass : 'CommandLineHandler',
 	#instVars : [
 		'baseDirectory'
 	],
-	#category : 'Mustache-Cli'
+	#category : 'Mustache-Cli',
+	#package : 'Mustache-Cli'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MustacheCommandLineHandler class >> commandName [
 	^'mustache'
 ]
 
-{ #category : #activation }
+{ #category : 'activation' }
 MustacheCommandLineHandler >> activate [
 	| result template json partials |
 	self activateHelp
@@ -35,41 +36,41 @@ MustacheCommandLineHandler >> activate [
 	template := (self baseDirectory resolve: self templateOption) contents.
 	partials := self partialsToDictionary: self partialsOption.
 	result := (MustacheTemplate on: template)
-		value: (Json readFrom: json readStream)
+		value: (STONJSON fromStream: json readStream)
 		partials: partials.
 	self stdout nextPutAll: result.
 	self stdout flush.
 	self exitSuccess
 ]
 
-{ #category : #activation }
+{ #category : 'activation' }
 MustacheCommandLineHandler >> baseDirectory [
 	^ baseDirectory ifNil: [ FileSystem workingDirectory ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustacheCommandLineHandler >> errorFileNotFound: aString [
 	self help.
 	self exitFailure: 'The file ', aString, ' was not found'.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustacheCommandLineHandler >> errorNeed: aString [
 	self help.
 	self exitFailure: 'You need to define ', aString.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustacheCommandLineHandler >> jsonDataOption [
 	^ self optionAt: 'data' ifAbsent: [ self errorNeed: 'data' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustacheCommandLineHandler >> partialsOption [
 	^ self optionAt: 'partials' ifAbsent: [ '' ].
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MustacheCommandLineHandler >> partialsToDictionary: aString [
 	| fileNames file partials name |
 	self flag: #TODO.
@@ -87,7 +88,7 @@ MustacheCommandLineHandler >> partialsToDictionary: aString [
 	^ partials 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustacheCommandLineHandler >> templateOption [
 	^ self optionAt: 'template' ifAbsent: [ self errorNeed: 'template' ]
 ]
