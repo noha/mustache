@@ -1,1 +1,1 @@
-Package { #name : #'Mustache-Cli' }
+Package { #name : 'Mustache-Cli' }
