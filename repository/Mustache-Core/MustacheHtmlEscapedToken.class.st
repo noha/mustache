@@ -1,20 +1,21 @@
 Class {
-	#name : #MustacheHtmlEscapedToken,
-	#superclass : #MustacheToken,
-	#category : #'Mustache-Core'
+	#name : 'MustacheHtmlEscapedToken',
+	#superclass : 'MustacheToken',
+	#category : 'Mustache-Core',
+	#package : 'Mustache-Core'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MustacheHtmlEscapedToken >> accept: aVisitor [ 
 	aVisitor visitHtmlEscapedToken: self 
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 MustacheHtmlEscapedToken >> storeOn: aWriteStream [ 
 	aWriteStream << '{{' << token << '}}'
 ]
 
-{ #category : #resolving }
-MustacheHtmlEscapedToken >> valueInContext: anObject [
-	^ (super valueInContext: anObject) asHTMLString 
+{ #category : 'resolving' }
+MustacheHtmlEscapedToken >> valueInContext: anObject visitor: aVisitor [
+	^ (super valueInContext: anObject visitor: aVisitor) asHTMLString 
 ]

@@ -1,6 +1,6 @@
-Extension { #name : #False }
+Extension { #name : 'False' }
 
-{ #category : #'*mustache-core' }
+{ #category : '*mustache-core' }
 False >> mustacheDo: aBlock inverted: aBoolean [
 	aBoolean ifTrue:  [ aBlock value: nil ]
 ]

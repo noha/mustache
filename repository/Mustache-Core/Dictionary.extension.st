@@ -1,6 +1,6 @@
-Extension { #name : #Dictionary }
+Extension { #name : 'Dictionary' }
 
-{ #category : #'*mustache-core' }
+{ #category : '*mustache-core' }
 Dictionary >> mustacheLookup: aString [
 	(aString = '.') ifTrue: [ ^ self ].
 	^ self at: aString ifAbsent: [ self mustacheLookupComplex: aString ]

@@ -4,27 +4,28 @@ A MustachePart is the base class for all entities that are parsed from a templat
 For public access have a look at MustacheTemplate
 "
 Class {
-	#name : #MustachePart,
-	#superclass : #Object,
-	#category : #'Mustache-Core'
+	#name : 'MustachePart',
+	#superclass : 'Object',
+	#category : 'Mustache-Core',
+	#package : 'Mustache-Core'
 }
 
-{ #category : #resolving }
+{ #category : 'resolving' }
 MustachePart >> lookup: aToken inContext: anObject [
 	^ anObject mustacheLookup: aToken
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 MustachePart >> printString [
 	^ self storeString
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 MustachePart >> storeSize [
 	self shouldBeImplemented 
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 MustachePart >> storeString [
 	^ String 
 		new: self storeSize

@@ -1,15 +1,16 @@
 Class {
-	#name : #MustacheInvertedSection,
-	#superclass : #MustacheSection,
-	#category : #'Mustache-Core'
+	#name : 'MustacheInvertedSection',
+	#superclass : 'MustacheSection',
+	#category : 'Mustache-Core',
+	#package : 'Mustache-Core'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MustacheInvertedSection >> isInverted [
 	^ true
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 MustacheInvertedSection >> storeOn: aWriteStream [ 
 	aWriteStream << '{{^' << selector << '}}'.
 	parts do: [ :part |

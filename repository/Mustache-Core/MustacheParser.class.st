@@ -2,8 +2,8 @@
 A MustacheParser is the internally used parser that is used my MustacheTemplate to compile a template string into a template structure
 "
 Class {
-	#name : #MustacheParser,
-	#superclass : #Object,
+	#name : 'MustacheParser',
+	#superclass : 'Object',
 	#instVars : [
 		'stream',
 		'startDelimiter',
@@ -11,22 +11,23 @@ Class {
 		'stack',
 		'delimiterExtensions'
 	],
-	#category : 'Mustache-Core'
+	#category : 'Mustache-Core',
+	#package : 'Mustache-Core'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MustacheParser class >> on: aStringOrStream [ 
 	^ self new
 		stream: aStringOrStream readStream 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustacheParser >> addPart: aMustachePart [
 	stack top addPart: aMustachePart
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustacheParser >> buildDelimiterExtensions [
 	^ Dictionary new
 		at: $# put: [ self startSection: MustacheSection ];
@@ -40,7 +41,7 @@ MustacheParser >> buildDelimiterExtensions [
 		yourself
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 MustacheParser >> compile [
 	|  sequenceStart |
 	sequenceStart := [ 
@@ -49,46 +50,46 @@ MustacheParser >> compile [
 	self readUpToEndUsing: sequenceStart 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 MustacheParser >> compileTemplate: aTemplate [
 	self push: aTemplate.
 	self compile
 ]
 
-{ #category : #reading }
+{ #category : 'reading' }
 MustacheParser >> consumeWhiteSpace [
 	[ stream atEnd not and: [ stream peek isSeparator ] ] whileTrue: [ 
 		stream next ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustacheParser >> defaultEndDelimiter [
 	^ '}}'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustacheParser >> defaultStartDelimiter [
 	^ '{{'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustacheParser >> delimiterExtensions [
 	^ delimiterExtensions ifNil: [ 
 		delimiterExtensions := self buildDelimiterExtensions ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustacheParser >> endDelimiter [
 	^ endDelimiter ifNil: [ 
 		endDelimiter := self defaultEndDelimiter  ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustacheParser >> endDelimiter: aString [
 	endDelimiter := aString
 ]
 
-{ #category : #reading }
+{ #category : 'reading' }
 MustacheParser >> endSection [
 	| token |
 	token := self readToken.
@@ -97,23 +98,23 @@ MustacheParser >> endSection [
 	stack pop
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 MustacheParser >> initialize [ 
 	super initialize.
 	stack := Stack new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MustacheParser >> isDelimiterExtension: aCharacter [
 	^ self delimiterExtensions keys includes: aCharacter
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustacheParser >> push: aTemplate [ 
 	stack push: aTemplate 
 ]
 
-{ #category : #reading }
+{ #category : 'reading' }
 MustacheParser >> readChangeDelimiter [
 	self startDelimiter: (String streamContents: [ :s| 
 		[ stream peek isSeparator ] whileFalse: [ 
@@ -122,18 +123,18 @@ MustacheParser >> readChangeDelimiter [
 	self endDelimiter: (stream upToAll: self endDelimiter) allButLast
 ]
 
-{ #category : #reading }
+{ #category : 'reading' }
 MustacheParser >> readComment [
 	"just read and forget"
 	self readToken
 ]
 
-{ #category : #reading }
+{ #category : 'reading' }
 MustacheParser >> readDefaultTag [
 	self readHtmlEscapedToken
 ]
 
-{ #category : #reading }
+{ #category : 'reading' }
 MustacheParser >> readDefaultUnescapedToken [
 	self readUnescapedToken.
 	(stream next = $}) ifFalse: [ 
@@ -141,46 +142,46 @@ MustacheParser >> readDefaultUnescapedToken [
 
 ]
 
-{ #category : #reading }
+{ #category : 'reading' }
 MustacheParser >> readExtendedTag [
 	 ^ (self delimiterExtensions at: stream next) value
 ]
 
-{ #category : #reading }
+{ #category : 'reading' }
 MustacheParser >> readHtmlEscapedToken [
 	self addPart: (MustacheHtmlEscapedToken token: self readToken)
 ]
 
-{ #category : #reading }
+{ #category : 'reading' }
 MustacheParser >> readPartial [
 	self addPart: (MustachePartial name: self readToken)
 ]
 
-{ #category : #reading }
+{ #category : 'reading' }
 MustacheParser >> readStringChunk [
 	(stream upToAll: self startDelimiter) ifNotNil: [:chunk|
 		self addPart: (MustacheStringChunk string: chunk) ].
 ]
 
-{ #category : #reading }
+{ #category : 'reading' }
 MustacheParser >> readTag [
 	(self isDelimiterExtension: stream peek)
 		ifTrue: [  self readExtendedTag  ]
 		ifFalse: [  self readDefaultTag  ]
 ]
 
-{ #category : #reading }
+{ #category : 'reading' }
 MustacheParser >> readToken [
 	^ (stream upToAll: self endDelimiter) trimBoth
 
 ]
 
-{ #category : #reading }
+{ #category : 'reading' }
 MustacheParser >> readUnescapedToken [
 	self addPart: (MustacheToken token: self readToken)
 ]
 
-{ #category : #reading }
+{ #category : 'reading' }
 MustacheParser >> readUpToEndUsing: aBlock [
 	| nextRead |
 	nextRead := aBlock.
@@ -188,18 +189,18 @@ MustacheParser >> readUpToEndUsing: aBlock [
 		 nextRead := nextRead value ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustacheParser >> startDelimiter [
 	^ startDelimiter ifNil: [
 		startDelimiter := self defaultStartDelimiter ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustacheParser >> startDelimiter: aString [
 	startDelimiter := aString
 ]
 
-{ #category : #reading }
+{ #category : 'reading' }
 MustacheParser >> startSection: aSectionClass [
 	| section |
 	section := aSectionClass selector: self readToken.
@@ -207,7 +208,7 @@ MustacheParser >> startSection: aSectionClass [
 	stack push: section	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustacheParser >> stream: aStream [ 
 	stream := aStream
 ]

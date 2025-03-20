@@ -1,35 +1,36 @@
 Class {
-	#name : #MustacheCompositePart,
-	#superclass : #MustachePart,
+	#name : 'MustacheCompositePart',
+	#superclass : 'MustachePart',
 	#instVars : [
 		'parts'
 	],
-	#category : #'Mustache-Core'
+	#category : 'Mustache-Core',
+	#package : 'Mustache-Core'
 }
 
-{ #category : #adding }
+{ #category : 'adding' }
 MustacheCompositePart >> addPart: aMustachePart [
 	parts add: aMustachePart 
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 MustacheCompositePart >> initialize [ 
 	super initialize.
 	parts := OrderedCollection new.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustacheCompositePart >> parts [
 	^ parts
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 MustacheCompositePart >> storeOn: aWriteStream [ 
 	parts do: [ :part |
 		part storeOn: aWriteStream  ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustacheCompositePart >> storeSize [
 	^ parts sum: #storeSize
 ]
