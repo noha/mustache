@@ -16,48 +16,49 @@ aMustacheTemplate value: aContextObject
 Nested templates can be used be providing a dictionary with keys as the names used in the master template and values being individual mustache templates
 "
 Class {
-	#name : #MustacheTemplate,
-	#superclass : #MustacheCompositePart,
-	#category : 'Mustache-Core'
+	#name : 'MustacheTemplate',
+	#superclass : 'MustacheCompositePart',
+	#category : 'Mustache-Core',
+	#package : 'Mustache-Core'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MustacheTemplate class >> on: aStringOrStream [ 
 	^ self new
 		compile: aStringOrStream readStream;
 		yourself
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MustacheTemplate >> accept: aVisitor [ 
 	aVisitor visitTemplate: self
 ]
 
-{ #category : #resolving }
+{ #category : 'resolving' }
 MustacheTemplate >> compile: aStream [
  	(self parserClass on: aStream)
 		compileTemplate: self
 			
 ]
 
-{ #category : #resolving }
+{ #category : 'resolving' }
 MustacheTemplate >> defaultVisitorClass [
 	^ MustacheWriteVisitor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustacheTemplate >> parserClass [
 	^ MustacheParser 
 ]
 
-{ #category : #resolving }
+{ #category : 'resolving' }
 MustacheTemplate >> value: anObject [ 
 	^ self 
 		value: anObject
 		partials: nil
 ]
 
-{ #category : #resolving }
+{ #category : 'resolving' }
 MustacheTemplate >> value: anObject partials: aDictionary [
 	^ self
 		value: anObject 
@@ -65,7 +66,7 @@ MustacheTemplate >> value: anObject partials: aDictionary [
 		visitor: self defaultVisitorClass new
 ]
 
-{ #category : #resolving }
+{ #category : 'resolving' }
 MustacheTemplate >> value: anObject partials: aDictionary visitor: aVisitor [
 	| visitor |
 	visitor := aVisitor
@@ -75,7 +76,7 @@ MustacheTemplate >> value: anObject partials: aDictionary visitor: aVisitor [
 	^ visitor string
 ]
 
-{ #category : #resolving }
+{ #category : 'resolving' }
 MustacheTemplate >> value: anObject visitor: aVisitor [
 	^ self 
 		value: anObject 

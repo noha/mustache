@@ -1,39 +1,40 @@
 Class {
-	#name : #MustachePartial,
-	#superclass : #MustachePart,
+	#name : 'MustachePartial',
+	#superclass : 'MustachePart',
 	#instVars : [
 		'name'
 	],
-	#category : #'Mustache-Core'
+	#category : 'Mustache-Core',
+	#package : 'Mustache-Core'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MustachePartial class >> name: aString [ 
 	^ self new
 		name: aString
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MustachePartial >> accept: aVisitor [ 
 	aVisitor visitPartial: self 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustachePartial >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustachePartial >> name: aString [ 
 	name := aString
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 MustachePartial >> storeOn: aStream [ 
 	aStream << '{{>' << name << '}}'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustachePartial >> storeSize [ 
 	"the size is the name of the partial plus 5 markup chararcters {{>}}"
 	^ name size + 5

@@ -1,39 +1,40 @@
 Class {
-	#name : #MustacheStringChunk,
-	#superclass : #MustachePart,
+	#name : 'MustacheStringChunk',
+	#superclass : 'MustachePart',
 	#instVars : [
 		'string'
 	],
-	#category : #'Mustache-Core'
+	#category : 'Mustache-Core',
+	#package : 'Mustache-Core'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MustacheStringChunk class >> string: aString [ 
 	^ self new
 		string: aString
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MustacheStringChunk >> accept: aVisitor [ 
 	aVisitor visitStringChunk: self
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 MustacheStringChunk >> storeOn: aWriteStream [ 
 	aWriteStream nextPutAll: string
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustacheStringChunk >> storeSize [
 	^ string size
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustacheStringChunk >> string [
 	^ string
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustacheStringChunk >> string: aString [ 
 	string := aString
 ]

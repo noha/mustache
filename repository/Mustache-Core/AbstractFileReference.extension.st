@@ -1,11 +1,11 @@
-Extension { #name : #AbstractFileReference }
+Extension { #name : 'AbstractFileReference' }
 
-{ #category : #'*mustache-core' }
+{ #category : '*mustache-core' }
 AbstractFileReference >> asMustacheTemplate [
 	^ MustacheTemplate on: self readStream contents asString
 ]
 
-{ #category : #'*mustache-core' }
+{ #category : '*mustache-core' }
 AbstractFileReference >> mustacheTemplateDuring: aBlock [
 	^ self
 		readStreamDo: [ :input | | input2 |

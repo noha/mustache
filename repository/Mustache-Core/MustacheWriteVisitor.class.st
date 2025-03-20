@@ -4,33 +4,39 @@ A MustacheWriteVisitor is the main visitor produces a final string from a templa
 It is used by MustacheTemplate
 "
 Class {
-	#name : #MustacheWriteVisitor,
-	#superclass : #MustacheVisitor,
+	#name : 'MustacheWriteVisitor',
+	#superclass : 'MustacheVisitor',
 	#instVars : [
 		'strings',
 		'context'
 	],
-	#category : 'Mustache-Core'
+	#category : 'Mustache-Core',
+	#package : 'Mustache-Core'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustacheWriteVisitor >> addString: aString [
 	aString ifNotEmpty: [ 
 		strings add: aString ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustacheWriteVisitor >> context: anObject [
 	context := anObject
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'private' }
+MustacheWriteVisitor >> convertToString: anObject [ 
+	^ anObject asString
+]
+
+{ #category : 'initialize-release' }
 MustacheWriteVisitor >> initialize [ 
 	super initialize.
 	strings := OrderedCollection new: 50.
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MustacheWriteVisitor >> renderSection: aSection withBlock: aBlock [
 	"generate a render continuation block and hand it over to block
 	in the template. Return value will be a string that add as a whole
@@ -42,7 +48,7 @@ MustacheWriteVisitor >> renderSection: aSection withBlock: aBlock [
 			string ]) 
 ]
 
-{ #category : #rendering }
+{ #category : 'rendering' }
 MustacheWriteVisitor >> renderSection: aSection withObject: anObject [
 	aSection 
 		mustacheDo: [:item|
@@ -53,7 +59,7 @@ MustacheWriteVisitor >> renderSection: aSection withObject: anObject [
 		inContext: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustacheWriteVisitor >> string [
 	^ strings
 		ifNotEmpty: [   
@@ -65,23 +71,23 @@ MustacheWriteVisitor >> string [
 		ifEmpty: [ '' ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MustacheWriteVisitor >> visitHtmlEscapedToken: aToken [
-	self addString: (aToken valueInContext: context)
+	self addString: (aToken valueInContext: context visitor: self)
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MustacheWriteVisitor >> visitSection: aSection [ 
 	 | oldContext value |
 	oldContext := context.
-	value := aSection valueInContext: context.
+	value := aSection valueInContext: context visitor: self.
 	[ value isClosure 
 		ifTrue: [ self renderSection: aSection withBlock: value ]
 		ifFalse: [ self renderSection: aSection withObject: value ]]
 			ensure: [ context := oldContext ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MustacheWriteVisitor >> visitStringChunk: aStringChunk [
 	self addString: aStringChunk string
 ]

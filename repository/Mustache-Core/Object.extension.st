@@ -1,21 +1,21 @@
-Extension { #name : #Object }
+Extension { #name : 'Object' }
 
-{ #category : #'*mustache-core' }
+{ #category : '*mustache-core' }
 Object >> mustacheDefaultWhenLookupFails [
 	^ nil
 ]
 
-{ #category : #'*mustache-core' }
+{ #category : '*mustache-core' }
 Object >> mustacheDo: aBlock [
 	self mustacheDo: aBlock inverted: false
 ]
 
-{ #category : #'*mustache-core' }
+{ #category : '*mustache-core' }
 Object >> mustacheDo: aBlock inverted: aBoolean [
 	aBoolean ifFalse:  [ aBlock cull: self ]
 ]
 
-{ #category : #'*mustache-core' }
+{ #category : '*mustache-core' }
 Object >> mustacheLookup: aString [
 	(aString = '.') ifTrue: [ ^ self ].
 	^ [ self perform: aString asSymbol ]
@@ -23,7 +23,7 @@ Object >> mustacheLookup: aString [
 		do: [ :err | self mustacheLookupComplex: aString  ]
 ]
 
-{ #category : #'*mustache-core' }
+{ #category : '*mustache-core' }
 Object >> mustacheLookupComplex: aString [
 	| stream firstPart |
 	stream := aString readStream.

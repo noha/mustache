@@ -1,13 +1,14 @@
 Class {
-	#name : #MustacheVisitor,
-	#superclass : #Object,
+	#name : 'MustacheVisitor',
+	#superclass : 'Object',
 	#instVars : [
 		'partials'
 	],
-	#category : 'Mustache-Core'
+	#category : 'Mustache-Core',
+	#package : 'Mustache-Core'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustacheVisitor >> partialAt: aString [ 
 	| template |
 	partials ifNil: [ Error signal: 'template has no partials' ].
@@ -18,53 +19,53 @@ MustacheVisitor >> partialAt: aString [
 	^ template
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MustacheVisitor >> partials: aDictionary [
 	partials := aDictionary
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MustacheVisitor >> visit: aMustachePart [
 	aMustachePart accept: self
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MustacheVisitor >> visitAll: aCollection [ 
 	aCollection do: [ :each |
 		self visit: each ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MustacheVisitor >> visitCompositePart: aCompositePart [
 	self visitAll: aCompositePart parts
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MustacheVisitor >> visitHtmlEscapedToken: aMustacheHTMLEscapedToken [ 
 	
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MustacheVisitor >> visitPartial: aMustachePartial [ 
 	self visit: (self partialAt: aMustachePartial name)
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MustacheVisitor >> visitSection: aMustacheSection [ 
 	self visitCompositePart: aMustacheSection 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MustacheVisitor >> visitStringChunk: aMustacheStringChunk [ 
 	
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MustacheVisitor >> visitTemplate: aMustacheTemplate [ 
 	self visitCompositePart: aMustacheTemplate 
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MustacheVisitor >> visitToken: aMustacheToken [
 	self visitHtmlEscapedToken: aMustacheToken  
 	
