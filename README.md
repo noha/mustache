@@ -1,4 +1,4 @@
-# Mustache Templates for Smalltalk
+# Mustache Templates for Pharo
 Mustache is a popular templating engine that is supported in many programming languages. I first encountered them in javascript while researching web toolkits. The syntax is small and covers a wide range of use cases. Maybe I should say that I didn’t find something I can’t do with it so far. Although it was designed to be a templating engine for HTML pages it is useful in different areas.
 
 I have done an implementation for Mustache in smalltalk. It is available at smalltalkhub (update: The source has moved to github: https://github.com/noha/mustache). There is documentation available on how the syntax is to be used. Here are a few examples to show the smalltalk methods you have to call in order to make it work.
@@ -127,7 +127,7 @@ Mustache can make template dependent tasks very easy from a simple token replace
 ```
     Metacello new
         baseline: 'Mustache';
-        repository: 'github://noha/mustache:v1.0/repository';
+        repository: 'github://noha/mustache:v1.3/repository';
         load
 ```
 
@@ -136,6 +136,6 @@ Mustache can make template dependent tasks very easy from a simple token replace
 ```
     spec 
         baseline: 'Mustache' 
-        with: [ spec repository: 'github://noha/mustache:v1.0/repository' ].
+        with: [ spec repository: 'github://noha/mustache:v1.3/repository' ].
 ```
 
