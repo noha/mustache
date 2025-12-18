@@ -32,3 +32,8 @@ Object >> mustacheLookupComplex: aString [
 		ifTrue: [ self mustacheDefaultWhenLookupFails ]
 		ifFalse: [ (self mustacheLookup: firstPart) mustacheLookup: stream upToEnd ]
 ]
+
+{ #category : '*mustache-core' }
+Object >> mustacheString [ 
+	^ self asString 
+]
