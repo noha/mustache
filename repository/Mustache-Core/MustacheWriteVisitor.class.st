@@ -27,7 +27,7 @@ MustacheWriteVisitor >> context: anObject [
 
 { #category : 'private' }
 MustacheWriteVisitor >> convertToString: anObject [ 
-	^ anObject asString
+	^ anObject mustacheString
 ]
 
 { #category : 'initialize-release' }
