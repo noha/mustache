@@ -1,7 +1,8 @@
 Extension { #name : 'Object' }
 
 { #category : '*mustache-core' }
-Object >> mustacheDefaultWhenLookupFails [
+Object >> mustacheDefaultWhenLookupFails: failingPartString [
+
 	^ nil
 ]
 
@@ -17,10 +18,14 @@ Object >> mustacheDo: aBlock inverted: aBoolean [
 
 { #category : '*mustache-core' }
 Object >> mustacheLookup: aString [
+	"The lookup supports navigation between objects using messages expressed by $. 
+	
+	For example {{{ site.configuration }}} means that the template accesses the value returned by the message configuration sent to the result of the message site."
+	
 	(aString = '.') ifTrue: [ ^ self ].
-	^ [ self perform: aString asSymbol ]
-		on: MessageNotUnderstood 
-		do: [ :err | self mustacheLookupComplex: aString  ]
+	^ (self respondsTo: aString asSymbol) 
+		ifTrue: [ self perform: aString asSymbol ]
+		ifFalse: [  self mustacheLookupComplex: aString ]
 ]
 
 { #category : '*mustache-core' }
