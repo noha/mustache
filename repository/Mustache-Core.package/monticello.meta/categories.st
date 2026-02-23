@@ -1,1 +1,1 @@
-SystemOrganization addCategory: #'Mustache-Core'!
+self packageOrganizer ensurePackage: #'Mustache-Core' withTags: #()!
