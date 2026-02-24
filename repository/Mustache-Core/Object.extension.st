@@ -21,11 +21,11 @@ Object >> mustacheLookup: aString [
 	"The lookup supports navigation between objects using messages expressed by $. 
 	
 	For example {{{ site.configuration }}} means that the template accesses the value returned by the message configuration sent to the result of the message site."
-	
+
 	(aString = '.') ifTrue: [ ^ self ].
-	^ (self respondsTo: aString asSymbol) 
-		ifTrue: [ self perform: aString asSymbol ]
-		ifFalse: [  self mustacheLookupComplex: aString ]
+	^ [ self perform: aString asSymbol ]
+		on: MessageNotUnderstood 
+		do: [ :err | self mustacheLookupComplex: aString  ]
 ]
 
 { #category : '*mustache-core' }
@@ -34,7 +34,7 @@ Object >> mustacheLookupComplex: aString [
 	stream := aString readStream.
 	firstPart := stream upTo: $. .
 	^ stream atEnd
-		ifTrue: [ self mustacheDefaultWhenLookupFails ]
+		ifTrue: [ self mustacheDefaultWhenLookupFails: aString ]
 		ifFalse: [ (self mustacheLookup: firstPart) mustacheLookup: stream upToEnd ]
 ]
 
